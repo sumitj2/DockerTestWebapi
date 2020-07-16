@@ -7,7 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["DockerTestWebapi/DockerTestWebapi.csproj", "DockerTestWebapi/"]
+#COPY ["DockerTestWebapi/DockerTestWebapi.csproj", "DockerTestWebapi/"]
+COPY . WebApp1/
 RUN dotnet restore "DockerTestWebapi/DockerTestWebapi.csproj"
 COPY . .
 WORKDIR "/src/DockerTestWebapi"
