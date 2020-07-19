@@ -11,8 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using cont = DockerTestWebapi.ModelsTable1;
+
 
 namespace DockerTestWebapi
 {
@@ -28,8 +27,7 @@ namespace DockerTestWebapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<EmployeeContext>(x => x.UseSqlServer("Server=tcp:employeeserver22.database.windows.net,1433;Initial Catalog=Employee;Persist Security Info=False;User ID=dbadmin;Password='tester@12345';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
-           services.AddDbContext<EmployeeContext>();
+            services.AddDbContext<EmployeeContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DockerTest")));
             services.AddControllers();
             services.AddScoped<IEmployeesData, EmployeeRepository>();
             services.AddSwaggerGen();

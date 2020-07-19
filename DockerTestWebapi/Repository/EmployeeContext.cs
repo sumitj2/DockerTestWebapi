@@ -20,9 +20,10 @@ namespace DockerTestWebapi.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connstring = "Server=tcp:employeeserver22.database.windows.net,1433;Initial Catalog=Employee;Persist Security Info=False;User ID=dbadmin;Password='tester@12345';";// GetConnectionString().GetAwaiter().GetResult();
+            ////string connstring = "Server=tcp:gbdockerdb.database.windows.net,1433;Initial Catalog=gaurav;Persist Security Info=False; User ID=gauravcbhandari;Password=gomzzy@951991";// GetConnectionString().GetAwaiter().GetResult();
+            ////string connstring = "Server=db;Initial Catalog=Employee;Persist Security Info=False;User ID=dbadmin;Password='tester@12345';";// GetConnectionString().GetAwaiter().GetResult();
 
-            optionsBuilder.UseSqlServer(connstring);
+            ////optionsBuilder.UseSqlServer(connstring);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,11 +34,5 @@ namespace DockerTestWebapi.Repository
             //    );
         }
 
-        //private async Task<string> GetConnectionString()
-        //{
-            
-
-        //    return secret.Value;
-        //}
-    }
+     }
 }

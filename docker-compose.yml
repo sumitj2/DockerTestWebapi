@@ -2,13 +2,23 @@ version: '3.4'
 
 services:
   dockertestwebapi:
+    image: dockertestwebapi
     build:
-      context: .
-      dockerfile: DockerTestWebapi/Dockerfile
+      context: /home/user123/api/DockerTestWebapi/DockerTestWebapi/
+      dockerfile: Dockerfile
+    ports:
+      - 5001:80
+  dockerwebapp:
+    image: dockerwebapp
+    build:
+      context: /home/user123/mvc/DockerWebApplication/DockerWebApplication/
+      dockerfile: Dockerfile
     depends_on:
-      - db
-  db:
-    image: "mcr.microsoft.com/mssql/server"
+      - dockertestwebapi
+    ports:
+      - 5000:80
     environment:
-      SA_PASSWORD: "tester@12345"
-      ACCEPT_EULA: "Y"
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=false
+      - SERVICE-ADRESS=52.152.173.239
+      - SERVICE-PORT=5001

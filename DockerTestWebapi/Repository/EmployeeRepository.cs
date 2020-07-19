@@ -22,13 +22,24 @@ namespace DockerTestWebapi.Repository
 
         public async Task<List<Employee>> GetAllEmployee()
         {
-            return dbcontext.Employee.ToList();
+            // return  dbcontext.Employee.ToList();
+            return await Task.Run(() => {
+
+                return dbcontext.Employee.ToList();
+            });
         }
 
         public async Task<int> SaveEmployee(Employee employee)
         {
-           dbcontext.Employee.Add(employee);
-           return dbcontext.SaveChanges();            
+
+            return await Task.Run(() => {
+
+                dbcontext.Employee.Add(employee);
+                return dbcontext.SaveChanges();
+            });
+
+           // dbcontext.Employee.Add(employee);
+           //return dbcontext.SaveChanges();            
         }
     }
 }
