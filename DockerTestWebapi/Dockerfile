@@ -5,8 +5,8 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-COPY DockerCertificate.cer /usr/share/ca-certificates
-RUN update-ca-certificates
+#COPY DockerCertificate.cer /usr/share/ca-certificates
+#RUN update-ca-certificates
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
